@@ -1,0 +1,57 @@
+<svg width="800" height="600" viewBox="0 0 800 600" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Perdagangan rempah — gudang">
+  <defs>
+    <linearGradient id="warm" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#E9DFC9"/>
+      <stop offset="1" stop-color="#F4EEE2"/>
+    </linearGradient>
+  </defs>
+  <rect width="800" height="600" fill="url(#warm)"/>
+
+  <!-- atap gudang -->
+  <path d="M120 150 L400 70 L680 150 Z" fill="#103B4E"/>
+  <rect x="150" y="150" width="500" height="8" fill="#0C2A3A"/>
+  <!-- garis dinding gudang -->
+  <g stroke="#1B7A8C" stroke-width="2" opacity="0.25">
+    <line x1="260" y1="158" x2="260" y2="250"/>
+    <line x1="400" y1="158" x2="400" y2="250"/>
+    <line x1="540" y1="158" x2="540" y2="250"/>
+  </g>
+
+  <!-- karung rempah (burlap) -->
+  <g>
+    <!-- karung 1 -->
+    <path d="M210 470 q-30 -120 70 -120 q100 0 70 120 Z" fill="#C9A24B"/>
+    <ellipse cx="280" cy="352" rx="34" ry="12" fill="#9E3D1F"/>
+    <circle cx="270" cy="350" r="5" fill="#C4502A"/>
+    <circle cx="288" cy="346" r="5" fill="#E0A23B"/>
+    <circle cx="280" cy="356" r="5" fill="#9E3D1F"/>
+    <!-- karung 2 -->
+    <path d="M360 480 q-34 -135 78 -135 q112 0 78 135 Z" fill="#B5894A"/>
+    <ellipse cx="438" cy="347" rx="38" ry="13" fill="#7a3018"/>
+    <circle cx="426" cy="344" r="6" fill="#E0A23B"/>
+    <circle cx="448" cy="340" r="6" fill="#C4502A"/>
+    <circle cx="438" cy="350" r="6" fill="#9E3D1F"/>
+    <!-- karung 3 -->
+    <path d="M520 470 q-30 -120 70 -120 q100 0 70 120 Z" fill="#C9A24B"/>
+    <ellipse cx="590" cy="352" rx="34" ry="12" fill="#9E3D1F"/>
+    <circle cx="580" cy="350" r="5" fill="#E0A23B"/>
+    <circle cx="598" cy="346" r="5" fill="#C4502A"/>
+    <circle cx="590" cy="356" r="5" fill="#9E3D1F"/>
+  </g>
+
+  <!-- lantai -->
+  <rect x="0" y="488" width="800" height="112" fill="#E9DFC9"/>
+  <rect x="0" y="488" width="800" height="3" fill="#C4502A" opacity="0.2"/>
+
+  <!-- rempah berserak -->
+  <g>
+    <circle cx="150" cy="520" r="6" fill="#9E3D1F"/>
+    <circle cx="172" cy="532" r="5" fill="#C4502A"/>
+    <circle cx="660" cy="525" r="6" fill="#9E3D1F"/>
+    <circle cx="684" cy="536" r="5" fill="#E0A23B"/>
+    <circle cx="400" cy="545" r="5" fill="#C4502A"/>
+  </g>
+
+  <!-- daun aksen -->
+  <path d="M690 110 q40 10 30 56 q-44 -6 -30 -56 Z" fill="#1B7A8C" opacity="0.8"/>
+</svg>

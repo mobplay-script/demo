@@ -1,0 +1,56 @@
+<svg width="800" height="600" viewBox="0 0 800 600" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Distribusi nasional — jaringan ritel">
+  <defs>
+    <linearGradient id="dist" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#0C2A3A"/>
+      <stop offset="1" stop-color="#103B4E"/>
+    </linearGradient>
+  </defs>
+  <rect width="800" height="600" fill="url(#dist)"/>
+
+  <!-- jaringan distribusi: hub -> simpul ritel -->
+  <g stroke="#1B7A8C" stroke-width="2" stroke-dasharray="4 7" opacity="0.6">
+    <line x1="400" y1="150" x2="170" y2="90"/>
+    <line x1="400" y1="150" x2="640" y2="100"/>
+    <line x1="400" y1="150" x2="120" y2="210"/>
+    <line x1="400" y1="150" x2="680" y2="220"/>
+    <line x1="400" y1="150" x2="300" y2="60"/>
+  </g>
+  <g fill="#3FA7B8">
+    <circle cx="170" cy="90" r="7"/>
+    <circle cx="640" cy="100" r="7"/>
+    <circle cx="120" cy="210" r="7"/>
+    <circle cx="680" cy="220" r="7"/>
+    <circle cx="300" cy="60" r="7"/>
+  </g>
+  <!-- hub pusat (node) -->
+  <circle cx="400" cy="150" r="16" fill="#E0A23B"/>
+  <circle cx="400" cy="150" r="26" fill="none" stroke="#E0A23B" stroke-width="2" opacity="0.4"/>
+
+  <!-- kardus tumpukan -->
+  <g>
+    <rect x="250" y="360" width="130" height="100" rx="4" fill="#C9A24B"/>
+    <rect x="250" y="360" width="130" height="22" fill="#9E3D1F"/>
+    <path d="M250 382 H380" stroke="#7a3018" stroke-width="2"/>
+    <path d="M315 382 V460" stroke="#7a3018" stroke-width="2"/>
+
+    <rect x="396" y="392" width="150" height="112" rx="4" fill="#B5894A"/>
+    <rect x="396" y="392" width="150" height="24" fill="#C4502A"/>
+    <path d="M396 416 H546" stroke="#7a3018" stroke-width="2"/>
+    <path d="M471 416 V504" stroke="#7a3018" stroke-width="2"/>
+    <!-- pita cukai -->
+    <rect x="452" y="392" width="38" height="112" fill="#E0A23B" opacity="0.85"/>
+  </g>
+
+  <!-- truk -->
+  <g>
+    <rect x="560" y="408" width="120" height="72" rx="6" fill="#102A3B"/>
+    <rect x="560" y="408" width="120" height="72" rx="6" fill="none" stroke="#3FA7B8" stroke-width="2" opacity="0.5"/>
+    <path d="M680 432 H716 L740 460 V480 H680 Z" fill="#0E3346"/>
+    <rect x="688" y="440" width="34" height="20" rx="2" fill="#9FB3BD" opacity="0.6"/>
+    <circle cx="600" cy="492" r="16" fill="#081826" stroke="#3FA7B8" stroke-width="3"/>
+    <circle cx="712" cy="492" r="16" fill="#081826" stroke="#3FA7B8" stroke-width="3"/>
+  </g>
+
+  <!-- lantai -->
+  <rect x="0" y="506" width="800" height="3" fill="#1B7A8C" opacity="0.4"/>
+</svg>

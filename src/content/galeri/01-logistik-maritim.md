@@ -2,7 +2,7 @@
 judul: Layanan Ship Chandler di Pelabuhan
 tanggal: 2026-05-12
 kategori: Logistik Maritim
-gambar: /img/galeri/placeholder.svg
+gambar: /img/bisnis/ship-chandler.svg
 urutan: 1
 ---
 
