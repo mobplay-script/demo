@@ -1,0 +1,78 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { liniBisnis } from '../data/site';
+---
+
+<BaseLayout title="Lini Bisnis">
+  <!-- Header halaman -->
+  <section class="bg-voyage-sea panel-dark">
+    <div class="container-app pb-16 pt-32 sm:pt-40">
+      <p class="eyebrow flex items-center gap-2.5 text-amber">
+        <span class="h-px w-8 bg-amber/60"></span> Bidang Usaha
+      </p>
+      <h1 class="mt-5 max-w-3xl text-4xl leading-[1.05] text-white sm:text-5xl">
+        Tiga lini, dari laut hingga pasar
+      </h1>
+      <p class="mt-6 max-w-xl text-mist">
+        Setiap bidang usaha kami kelola secara terintegrasi sebagai simpul rantai pasok nasional.
+      </p>
+    </div>
+  </section>
+
+  <!-- Detail per lini -->
+  <section class="section bg-deep panel-dark">
+    <div class="container-app space-y-20">
+      {liniBisnis.map((b, i) => (
+        <div
+          id={b.slug}
+          class:list={[
+            'reveal grid scroll-mt-28 gap-10 lg:grid-cols-2 lg:items-center',
+            i % 2 === 1 && 'lg:[&>figure]:order-last',
+          ]}
+        >
+          <figure class="aspect-[4/3] overflow-hidden rounded-2xl border border-white/10 bg-sea">
+            <img
+              src={`/img/bisnis/${b.slug}.jpg`}
+              alt={b.nama}
+              loading="lazy"
+              class="h-full w-full object-cover"
+              onerror="this.parentElement.classList.add('grid','place-items-center');this.replaceWith(Object.assign(document.createElement('span'),{className:'font-mono text-xs uppercase tracking-eyebrow text-mist/60',textContent:'Foto — ' + this.alt}))"
+            />
+          </figure>
+          <div>
+            <div class="flex items-center gap-3">
+              <span class="route-dot"></span>
+              <span class="eyebrow text-amber">{b.domain} · {b.kategori}</span>
+            </div>
+            <h2 class="mt-5 text-3xl text-white sm:text-4xl">{b.nama}</h2>
+            <p class="mt-4 leading-relaxed text-mist">{b.ringkas}</p>
+            <ul class="mt-6 space-y-3.5">
+              {b.poin.map((p) => (
+                <li class="flex gap-3 text-sm text-white/85">
+                  <svg class="mt-0.5 h-5 w-5 flex-none text-amber" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
+                  </svg>
+                  <span>{p}</span>
+                </li>
+              ))}
+            </ul>
+            <p class="mt-6 font-mono text-[0.7rem] uppercase tracking-eyebrow text-teal-light/80">{b.tag}</p>
+          </div>
+        </div>
+      ))}
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="bg-voyage-shore pt-28">
+    <div class="container-app pb-24">
+      <div class="reveal panel-light card-light flex flex-col items-center gap-6 p-12 text-center">
+        <h2 class="text-3xl sm:text-4xl">Butuh informasi lebih lanjut?</h2>
+        <p class="max-w-prose text-ink/60">
+          Tim kami siap membantu kebutuhan perdagangan, suplai, dan jasa Anda.
+        </p>
+        <a href="/kontak" class="btn-ink">Hubungi Kami</a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

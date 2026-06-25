@@ -1,0 +1,16 @@
+<?php
+/**
+ * Salin file ini menjadi: config.php (di folder yang sama),
+ * lalu isi kredensial SMTP email domain Anda dari cPanel.
+ *
+ * PENTING: config.php sudah masuk .gitignore — JANGAN commit kredensial.
+ */
+return [
+    'to'          => 'info@cahayamasjayaraya.co.id',
+    'to_name'     => 'PT Cahayamas Jaya Raya',
+    'smtp_host'   => 'mail.cahayamasjayaraya.co.id',
+    'smtp_user'   => 'info@cahayamasjayaraya.co.id',
+    'smtp_pass'   => 'PASSWORD_EMAIL_ANDA',
+    'smtp_port'   => 587,
+    'smtp_secure' => 'tls', // 'tls' untuk port 587, 'ssl' untuk port 465
+];

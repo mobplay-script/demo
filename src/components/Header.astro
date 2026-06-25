@@ -1,0 +1,93 @@
+---
+import { nav, site } from '../data/site';
+const path = Astro.url.pathname;
+const isActive = (href: string) =>
+  href === '/' ? path === '/' : path.startsWith(href);
+---
+
+<header
+  id="site-header"
+  class="fixed inset-x-0 top-0 z-40 transition-all duration-300"
+  data-state="top"
+>
+  <div class="container-app flex h-16 items-center justify-between sm:h-20">
+    <a href="/" class="group flex items-center gap-2.5">
+      <span class="route-dot ring-amber/30"></span>
+      <span class="font-display text-lg font-extrabold tracking-tight text-white">
+        Cahayamas<span class="text-amber"> Jaya Raya</span>
+      </span>
+    </a>
+
+    <!-- Nav desktop -->
+    <nav class="hidden items-center gap-1 md:flex">
+      {nav.map((item) => (
+        <a
+          href={item.href}
+          class:list={[
+            'rounded-full px-4 py-2 text-sm font-medium transition-colors',
+            isActive(item.href)
+              ? 'text-amber'
+              : 'text-white/70 hover:text-white',
+          ]}
+        >
+          {item.label}
+        </a>
+      ))}
+      <a href="/kontak" class="btn-amber ml-2 !px-5 !py-2.5">Hubungi Kami</a>
+    </nav>
+
+    <button
+      id="menu-btn"
+      class="text-white md:hidden"
+      aria-label="Buka menu"
+      aria-expanded="false"
+    >
+      <svg class="h-7 w-7" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16" />
+      </svg>
+    </button>
+  </div>
+
+  <!-- Menu mobile -->
+  <nav id="mobile-menu" class="hidden border-t border-white/10 bg-abyss/95 backdrop-blur md:hidden">
+    <div class="container-app flex flex-col py-3">
+      {nav.map((item) => (
+        <a
+          href={item.href}
+          class:list={[
+            'rounded-lg px-3 py-3 text-sm font-medium',
+            isActive(item.href) ? 'text-amber' : 'text-white/80',
+          ]}
+        >
+          {item.label}
+        </a>
+      ))}
+      <a href="/kontak" class="btn-amber mt-2">Hubungi Kami</a>
+    </div>
+  </nav>
+</header>
+
+<style>
+  #site-header[data-state='scrolled'] {
+    background: rgba(8, 24, 38, 0.82);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  }
+</style>
+
+<script>
+  const header = document.getElementById('site-header');
+  const btn = document.getElementById('menu-btn');
+  const menu = document.getElementById('mobile-menu');
+
+  const onScroll = () => {
+    header?.setAttribute('data-state', window.scrollY > 24 ? 'scrolled' : 'top');
+  };
+  onScroll();
+  window.addEventListener('scroll', onScroll, { passive: true });
+
+  btn?.addEventListener('click', () => {
+    const hidden = menu?.classList.toggle('hidden');
+    btn.setAttribute('aria-expanded', String(hidden === false));
+  });
+</script>

@@ -1,0 +1,143 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ============================================================
+   PT Cahayamas Jaya Raya — "Arus" (sea-to-spice voyage)
+   ============================================================ */
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+  body {
+    @apply bg-abyss font-sans text-mist antialiased;
+  }
+  h1, h2, h3, h4 {
+    @apply font-display font-extrabold tracking-tight;
+    text-wrap: balance;
+  }
+  ::selection {
+    background: theme('colors.amber.DEFAULT');
+    color: theme('colors.ink');
+  }
+  :focus-visible {
+    outline: 2px solid theme('colors.amber.DEFAULT');
+    outline-offset: 3px;
+    border-radius: 2px;
+  }
+}
+
+@layer components {
+  .container-app {
+    @apply mx-auto w-full max-w-6xl px-5 sm:px-8;
+  }
+
+  /* --- Panel suhu: gelap (laut) → terang (pasar) --- */
+  .panel-dark {
+    @apply text-mist;
+  }
+  .panel-dark h1, .panel-dark h2, .panel-dark h3, .panel-dark h4 {
+    @apply text-white;
+  }
+  .panel-light {
+    @apply bg-sand text-ink/70;
+  }
+  .panel-light h1, .panel-light h2, .panel-light h3, .panel-light h4 {
+    @apply text-ink;
+  }
+
+  /* gradien laut dalam (hero) */
+  .bg-voyage-sea {
+    background:
+      radial-gradient(120% 80% at 80% -10%, rgba(27,122,140,0.35), transparent 60%),
+      radial-gradient(90% 60% at 10% 110%, rgba(224,162,59,0.12), transparent 55%),
+      linear-gradient(180deg, #061320 0%, #081826 55%, #0C2A3A 100%);
+  }
+  /* peralihan laut → pesisir */
+  .bg-voyage-coast {
+    background: linear-gradient(180deg, #0C2A3A 0%, #103B4E 100%);
+  }
+  /* peralihan pesisir → darat hangat */
+  .bg-voyage-shore {
+    background: linear-gradient(180deg, #103B4E 0%, #1B7A8C 45%, #E9DFC9 100%);
+  }
+
+  /* --- Eyebrow mono (label manifes) --- */
+  .eyebrow {
+    @apply font-mono text-[0.7rem] uppercase tracking-eyebrow;
+  }
+
+  /* --- Tombol --- */
+  .btn {
+    @apply inline-flex items-center justify-center gap-2 rounded-full px-6 py-3 text-sm font-semibold transition-all duration-200;
+  }
+  .btn-amber {
+    @apply btn bg-amber text-ink hover:bg-amber-light hover:-translate-y-0.5;
+    box-shadow: 0 8px 24px -8px rgba(224, 162, 59, 0.6);
+  }
+  .btn-ghost {
+    @apply btn border border-white/25 text-white hover:border-white hover:bg-white/5;
+  }
+  .btn-ink {
+    @apply btn bg-ink text-sand hover:bg-clove-dark hover:-translate-y-0.5;
+  }
+
+  /* --- Kartu --- */
+  .card-dark {
+    @apply rounded-2xl border border-white/10 bg-white/[0.03] p-7 backdrop-blur-sm transition-all duration-300;
+  }
+  .card-dark:hover {
+    @apply border-amber/40 bg-white/[0.05];
+    transform: translateY(-4px);
+  }
+  .card-light {
+    @apply rounded-2xl border border-ink/10 bg-white p-7 transition-all duration-300;
+  }
+  .card-light:hover {
+    @apply border-clove/30;
+    transform: translateY(-4px);
+    box-shadow: 0 18px 40px -24px rgba(32, 22, 15, 0.45);
+  }
+
+  .section {
+    @apply py-20 sm:py-28;
+  }
+
+  /* --- Garis rute + titik singgah (waypoint) --- */
+  .route-node {
+    @apply relative;
+  }
+  .route-dot {
+    @apply h-3 w-3 flex-none rounded-full bg-amber ring-4 ring-amber/20;
+  }
+
+  /* --- Reveal saat scroll --- */
+  .reveal {
+    opacity: 0;
+    transform: translateY(24px);
+    transition: opacity 0.7s cubic-bezier(0.22, 1, 0.36, 1),
+      transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+    will-change: opacity, transform;
+  }
+  .reveal.is-visible {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    transition-duration: 0.001ms !important;
+  }
+  .reveal {
+    opacity: 1;
+    transform: none;
+  }
+}

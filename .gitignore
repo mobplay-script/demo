@@ -1,0 +1,17 @@
+# build output
+dist/
+# dependencies
+node_modules/
+# generated types
+.astro/
+# environment / secrets
+public/config.php
+*.local
+.env
+.env.production
+# logs
+npm-debug.log*
+# macOS / editor
+.DS_Store
+.vscode/*
+!.vscode/extensions.json

@@ -1,0 +1,150 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { site } from '../data/site';
+
+const status = Astro.url.searchParams.get('status');
+const mapsSrc = `https://maps.google.com/maps?q=${encodeURIComponent(site.mapsQuery)}&output=embed`;
+
+// Mode demo (Vercel): tombol kirim menampilkan pesan sukses tanpa benar-benar mengirim,
+// karena Vercel tidak menjalankan PHP. Set `false` saat deploy ke shared hosting
+// agar form benar-benar POST ke contact.php.
+const DEMO_MODE = true;
+const inputClass =
+  'w-full rounded-xl border border-white/15 bg-white/5 px-4 py-3 text-sm text-white placeholder-mist/50 transition focus:border-amber focus:outline-none focus:ring-1 focus:ring-amber';
+---
+
+<BaseLayout title="Kontak">
+  <!-- Header halaman -->
+  <section class="bg-voyage-sea panel-dark">
+    <div class="container-app pb-16 pt-32 sm:pt-40">
+      <p class="eyebrow flex items-center gap-2.5 text-amber">
+        <span class="h-px w-8 bg-amber/60"></span> Hubungi Kami
+      </p>
+      <h1 class="mt-5 max-w-3xl text-4xl leading-[1.05] text-white sm:text-5xl">
+        Mari mulai percakapan
+      </h1>
+      <p class="mt-6 max-w-xl text-mist">
+        Sampaikan kebutuhan Anda lewat formulir di bawah — tim kami akan merespons
+        secepatnya pada jam kerja.
+      </p>
+    </div>
+  </section>
+
+  <section class="section bg-deep panel-dark">
+    <div class="container-app grid gap-14 lg:grid-cols-2">
+      <!-- Info -->
+      <div>
+        <h2 class="text-2xl text-white">Informasi Kontak</h2>
+        <ul class="mt-7 space-y-6 text-sm">
+          <li>
+            <p class="eyebrow text-amber">Alamat</p>
+            <p class="mt-2 text-mist">{site.alamat}</p>
+          </li>
+          <li>
+            <p class="eyebrow text-amber">Email</p>
+            <p class="mt-2 text-mist">{site.email}</p>
+          </li>
+          <li>
+            <p class="eyebrow text-amber">Telepon / WhatsApp</p>
+            <div class="mt-3 flex flex-wrap gap-2">
+              {site.telepon.map((t) => (
+                <span class="rounded-full border border-white/15 bg-white/5 px-4 py-2 font-mono text-xs text-white">
+                  {t.label}
+                </span>
+              ))}
+            </div>
+          </li>
+        </ul>
+
+        <div class="mt-8 overflow-hidden rounded-2xl border border-white/10">
+          <iframe
+            src={mapsSrc}
+            width="100%"
+            height="280"
+            style="border:0"
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"
+            title="Lokasi PT Cahayamas Jaya Raya"
+          ></iframe>
+        </div>
+      </div>
+
+      <!-- Form -->
+      <div>
+        <h2 class="text-2xl text-white">Kirim Pesan</h2>
+
+        {DEMO_MODE && (
+          <div id="form-demo-success" class="mt-5 hidden rounded-xl border border-teal/40 bg-teal/10 px-4 py-3 text-sm text-teal-light">
+            Pesan Anda terkirim. Tim kami akan menghubungi Anda kembali secepatnya.
+          </div>
+        )}
+
+        {status === 'success' && (
+          <div class="mt-5 rounded-xl border border-teal/40 bg-teal/10 px-4 py-3 text-sm text-teal-light">
+            Pesan Anda terkirim. Tim kami akan menghubungi Anda kembali secepatnya.
+          </div>
+        )}
+        {status === 'error' && (
+          <div class="mt-5 rounded-xl border border-clove/40 bg-clove/10 px-4 py-3 text-sm text-clove">
+            Pesan belum terkirim. Periksa kembali isian Anda lalu coba lagi, atau kirim
+            email ke {site.email}.
+          </div>
+        )}
+
+        <form id="kontak-form" action="/contact.php" method="POST" class="mt-6 space-y-4">
+          <input type="text" name="website" tabindex="-1" autocomplete="off" class="hidden" aria-hidden="true" />
+
+          <div>
+            <label for="nama" class="mb-1.5 block font-mono text-[0.7rem] uppercase tracking-eyebrow text-mist">Nama Lengkap *</label>
+            <input id="nama" name="nama" type="text" required class={inputClass} />
+          </div>
+
+          <div class="grid gap-4 sm:grid-cols-2">
+            <div>
+              <label for="email" class="mb-1.5 block font-mono text-[0.7rem] uppercase tracking-eyebrow text-mist">Email *</label>
+              <input id="email" name="email" type="email" required class={inputClass} />
+            </div>
+            <div>
+              <label for="telepon" class="mb-1.5 block font-mono text-[0.7rem] uppercase tracking-eyebrow text-mist">Telepon / WA</label>
+              <input id="telepon" name="telepon" type="tel" class={inputClass} />
+            </div>
+          </div>
+
+          <div>
+            <label for="subjek" class="mb-1.5 block font-mono text-[0.7rem] uppercase tracking-eyebrow text-mist">Subjek</label>
+            <input id="subjek" name="subjek" type="text" class={inputClass} />
+          </div>
+
+          <div>
+            <label for="pesan" class="mb-1.5 block font-mono text-[0.7rem] uppercase tracking-eyebrow text-mist">Pesan *</label>
+            <textarea id="pesan" name="pesan" rows="5" required class={inputClass}></textarea>
+          </div>
+
+          <button type="submit" class="btn-amber w-full">Kirim Pesan</button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  {DEMO_MODE && (
+    <script is:inline>
+      (function () {
+        var form = document.getElementById('kontak-form');
+        var ok = document.getElementById('form-demo-success');
+        if (!form) return;
+        form.addEventListener('submit', function (e) {
+          e.preventDefault();
+          if (!form.checkValidity()) {
+            form.reportValidity();
+            return;
+          }
+          form.reset();
+          if (ok) {
+            ok.classList.remove('hidden');
+            ok.scrollIntoView({ behavior: 'smooth', block: 'center' });
+          }
+        });
+      })();
+    </script>
+  )}
+</BaseLayout>

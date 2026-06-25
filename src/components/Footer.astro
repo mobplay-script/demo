@@ -1,0 +1,48 @@
+---
+import { nav, site } from '../data/site';
+const tahun = new Date().getFullYear();
+---
+
+<footer class="bg-ink text-sand/70">
+  <div class="container-app grid gap-10 py-16 sm:grid-cols-2 lg:grid-cols-4">
+    <div class="lg:col-span-2">
+      <div class="flex items-center gap-2.5">
+        <span class="route-dot"></span>
+        <span class="font-display text-xl font-extrabold text-sand">{site.nama}</span>
+      </div>
+      <p class="mt-4 max-w-md text-sm leading-relaxed text-sand/60">
+        {site.deskripsi}
+      </p>
+      <p class="eyebrow mt-5 text-amber">{site.tagline}</p>
+    </div>
+
+    <div>
+      <h4 class="font-mono text-[0.7rem] uppercase tracking-eyebrow text-sand/50">Navigasi</h4>
+      <ul class="mt-4 space-y-2.5 text-sm">
+        {nav.map((item) => (
+          <li>
+            <a href={item.href} class="text-sand/70 transition-colors hover:text-amber">{item.label}</a>
+          </li>
+        ))}
+      </ul>
+    </div>
+
+    <div>
+      <h4 class="font-mono text-[0.7rem] uppercase tracking-eyebrow text-sand/50">Kontak</h4>
+      <ul class="mt-4 space-y-2.5 text-sm text-sand/70">
+        <li class="leading-relaxed">{site.alamat}</li>
+        <li>{site.email}</li>
+        {site.telepon.map((t) => (
+          <li>{t.label}</li>
+        ))}
+      </ul>
+    </div>
+  </div>
+
+  <div class="border-t border-sand/10">
+    <div class="container-app flex flex-col items-center justify-between gap-2 py-6 text-center font-mono text-[0.7rem] text-sand/40 sm:flex-row sm:text-left">
+      <span>&copy; {tahun} {site.nama}</span>
+      <span>BEKASI · INDONESIA</span>
+    </div>
+  </div>
+</footer>

@@ -1,0 +1,27 @@
+---
+interface Props {
+  domain: string;
+  nama: string;
+  tag: string;
+  ringkas: string;
+  href?: string;
+}
+const { domain, nama, tag, ringkas, href } = Astro.props;
+---
+
+<article class="card-dark route-node group flex flex-col">
+  <div class="flex items-center gap-3">
+    <span class="route-dot"></span>
+    <span class="eyebrow text-amber">{domain}</span>
+  </div>
+  <h3 class="mt-5 text-xl text-white">{nama}</h3>
+  <p class="mt-3 text-sm leading-relaxed text-mist">{ringkas}</p>
+  <p class="mt-5 font-mono text-[0.7rem] leading-relaxed text-teal-light/80">{tag}</p>
+
+  {href && (
+    <a href={href} class="mt-6 inline-flex items-center gap-1.5 text-sm font-semibold text-amber transition-all group-hover:gap-2.5">
+      Selengkapnya
+      <span aria-hidden="true">&rarr;</span>
+    </a>
+  )}
+</article>

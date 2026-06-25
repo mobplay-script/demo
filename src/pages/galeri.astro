@@ -1,0 +1,50 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { getCollection } from 'astro:content';
+
+const item = (await getCollection('galeri')).sort(
+  (a, b) => a.data.urutan - b.data.urutan,
+);
+---
+
+<BaseLayout title="Galeri">
+  <!-- Header halaman -->
+  <section class="bg-voyage-sea panel-dark">
+    <div class="container-app pb-16 pt-32 sm:pt-40">
+      <p class="eyebrow flex items-center gap-2.5 text-amber">
+        <span class="h-px w-8 bg-amber/60"></span> Dokumentasi
+      </p>
+      <h1 class="mt-5 max-w-3xl text-4xl leading-[1.05] text-white sm:text-5xl">
+        Galeri kegiatan &amp; operasional
+      </h1>
+    </div>
+  </section>
+
+  <section class="section bg-deep panel-dark">
+    <div class="container-app">
+      <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+        {item.map((g) => (
+          <figure class="reveal card-dark group overflow-hidden p-0">
+            <div class="aspect-[4/3] overflow-hidden bg-sea">
+              <img
+                src={g.data.gambar}
+                alt={g.data.judul}
+                loading="lazy"
+                class="h-full w-full object-cover transition duration-500 group-hover:scale-105"
+              />
+            </div>
+            <figcaption class="p-6">
+              <span class="eyebrow text-amber">{g.data.kategori}</span>
+              <h3 class="mt-2 text-base text-white">{g.data.judul}</h3>
+              <p class="mt-2 text-sm text-mist">{g.body}</p>
+            </figcaption>
+          </figure>
+        ))}
+      </div>
+
+      <p class="mt-12 text-center font-mono text-[0.7rem] uppercase tracking-eyebrow text-mist/50">
+        Tambah dokumentasi via berkas .md di src/content/galeri/
+      </p>
+    </div>
+  </section>
+</BaseLayout>

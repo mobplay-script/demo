@@ -1,0 +1,46 @@
+# ============================================================
+#  PT Cahayamas Jaya Raya — konfigurasi shared hosting (Apache)
+# ============================================================
+
+# --- Paksa HTTPS ---
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+  RewriteCond %{HTTPS} off
+  RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+</IfModule>
+
+# --- Halaman error custom (opsional, buat file 404.html bila perlu) ---
+ErrorDocument 404 /404.html
+
+# --- Lindungi file sensitif ---
+<FilesMatch "(^config\.php$|composer\.(json|lock)$|\.(env|md|gitignore)$)">
+  Require all denied
+</FilesMatch>
+
+# --- Blokir akses langsung ke folder vendor ---
+RewriteRule ^vendor/ - [F,L]
+
+# --- Kompresi Gzip ---
+<IfModule mod_deflate.c>
+  AddOutputFilterByType DEFLATE text/html text/plain text/css application/javascript application/json image/svg+xml
+</IfModule>
+
+# --- Cache aset statis ---
+<IfModule mod_expires.c>
+  ExpiresActive On
+  ExpiresByType text/css "access plus 1 year"
+  ExpiresByType application/javascript "access plus 1 year"
+  ExpiresByType image/jpeg "access plus 6 months"
+  ExpiresByType image/png "access plus 6 months"
+  ExpiresByType image/webp "access plus 6 months"
+  ExpiresByType image/svg+xml "access plus 6 months"
+  ExpiresByType font/woff2 "access plus 1 year"
+  ExpiresByType text/html "access plus 0 seconds"
+</IfModule>
+
+# --- Header keamanan dasar ---
+<IfModule mod_headers.c>
+  Header set X-Content-Type-Options "nosniff"
+  Header set X-Frame-Options "SAMEORIGIN"
+  Header set Referrer-Policy "strict-origin-when-cross-origin"
+</IfModule>
