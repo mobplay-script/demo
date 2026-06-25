@@ -1,0 +1,46 @@
+<svg width="1200" height="630" viewBox="0 0 1200 630" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#061320"/>
+      <stop offset="0.55" stop-color="#081826"/>
+      <stop offset="1" stop-color="#0C2A3A"/>
+    </linearGradient>
+    <radialGradient id="glow" cx="0.82" cy="0.12" r="0.6">
+      <stop offset="0" stop-color="#1B7A8C" stop-opacity="0.45"/>
+      <stop offset="1" stop-color="#1B7A8C" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+
+  <rect width="1200" height="630" fill="url(#bg)"/>
+  <rect width="1200" height="630" fill="url(#glow)"/>
+  <!-- garis horizon -->
+  <rect x="0" y="315" width="1200" height="1.5" fill="#E0A23B" opacity="0.22"/>
+  <!-- bingkai -->
+  <rect x="16" y="16" width="1168" height="598" rx="20" fill="none" stroke="#FFFFFF" stroke-opacity="0.08" stroke-width="2"/>
+
+  <!-- logo mark: tiga arus menyatu ke node -->
+  <g transform="translate(90,78)">
+    <circle cx="40" cy="40" r="38" stroke="#1B7A8C" stroke-width="2" opacity="0.4"/>
+    <path d="M8 22 Q29 34 40 40" stroke="#3FA7B8" stroke-width="5" stroke-linecap="round"/>
+    <path d="M74 28 Q51 35 40 40" stroke="#3FA7B8" stroke-width="5" stroke-linecap="round"/>
+    <path d="M40 74 Q40 53 40 40" stroke="#3FA7B8" stroke-width="5" stroke-linecap="round"/>
+    <circle cx="40" cy="40" r="11" fill="#E0A23B"/>
+  </g>
+  <text x="192" y="118" font-family="Arial, sans-serif" font-size="30" font-weight="700" letter-spacing="1" fill="#FFFFFF">PT Cahayamas Jaya Raya</text>
+  <text x="192" y="150" font-family="Arial, sans-serif" font-size="18" font-weight="700" letter-spacing="4" fill="#9FB3BD">PERDAGANGAN UMUM · SUPPLY · JASA</text>
+
+  <!-- headline -->
+  <text x="90" y="330" font-family="Arial, sans-serif" font-size="92" font-weight="800" letter-spacing="-1" fill="#FFFFFF">Menyatukan arus</text>
+  <text x="90" y="426" font-family="Arial, sans-serif" font-size="92" font-weight="800" letter-spacing="-1">
+    <tspan fill="#3FA7B8">laut</tspan><tspan fill="#FFFFFF">, </tspan><tspan fill="#E0A23B">ladang</tspan><tspan fill="#FFFFFF">, </tspan><tspan fill="#F0C173">pasar</tspan><tspan fill="#FFFFFF">.</tspan>
+  </text>
+
+  <!-- subline -->
+  <text x="92" y="486" font-family="Arial, sans-serif" font-size="27" font-weight="400" fill="#9FB3BD">Logistik maritim · Komoditas rempah · Distribusi nasional</text>
+
+  <!-- tagline bawah -->
+  <g transform="translate(90,548)">
+    <rect x="0" y="-13" width="34" height="3" rx="1.5" fill="#E0A23B"/>
+    <text x="48" y="-4" font-family="Arial, sans-serif" font-size="20" font-weight="700" letter-spacing="3" fill="#E0A23B">GROWING TOGETHER · SERVING BETTER</text>
+  </g>
+</svg>
