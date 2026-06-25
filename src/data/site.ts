@@ -6,8 +6,8 @@ export const site = {
   tagline: 'Growing Together, Serving Better',
   deskripsi:
     'Perusahaan swasta nasional terintegrasi di bidang Perdagangan Umum, Penyuplai, dan Jasa. Logistik maritim, perdagangan rempah, dan distribusi tembakau.',
-  // GANTI dengan domain final saat sudah dibeli
-  url: 'https://cahayamasjayaraya.co.id',
+  // URL demo Vercel — ganti ke domain final saat sudah dibeli
+  url: 'https://demo-psi-murex-88.vercel.app',
   email: 'info@cahayamasjayaraya.co.id',
   alamat: 'Jl. Palem Blok C No.27 RT.004 RW.013 Jatirasa, Bekasi 17424',
   // Untuk embed Google Maps (ganti dengan query/koordinat yang benar)

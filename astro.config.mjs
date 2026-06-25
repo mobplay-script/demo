@@ -5,8 +5,9 @@ import sitemap from '@astrojs/sitemap';
 
 // https://astro.build/config
 export default defineConfig({
-  // GANTI dengan domain final saat sudah dibeli (dipakai untuk sitemap & canonical URL)
-  site: 'https://cahayamasjayaraya.co.id',
+  // URL demo Vercel (dipakai untuk sitemap & canonical URL).
+  // Ganti ke domain final saat sudah dibeli.
+  site: 'https://demo-psi-murex-88.vercel.app',
   output: 'static',
   integrations: [tailwind(), sitemap()],
   build: {
